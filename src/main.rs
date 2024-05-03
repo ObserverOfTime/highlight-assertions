@@ -53,7 +53,7 @@ fn main() -> anyhow::Result<()> {
     let args = Args::parse();
     let (language, _lib) = unsafe { load_language(&args.parser_file)? };
     let mut parser = tree_sitter::Parser::new();
-    parser.set_language(language)?;
+    parser.set_language(&language)?;
 
     let assertions = parse_position_comments(
         &mut parser,
